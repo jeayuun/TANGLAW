@@ -314,6 +314,21 @@ html.w-mod-touch * {
   display: inline-block;
 }
 
+.code_editor_area {
+    height: 320px; /* Fixed height for the editor container */
+    display: flex; /* Ensures layout stability */
+    overflow: hidden; /* Prevents overflow adjustments */
+}
+
+.line_numbers {
+  height: 100%; /* Match the height of the editor container */
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.line_numbers div {
+  height: 1.5em; /* Match line height of textarea */
+}
+
 input.w-button {
   appearance: none; /* Standard property for modern browsers */
   -webkit-appearance: none; /* Vendor prefix for WebKit browsers */
@@ -409,6 +424,32 @@ pre.w-code-block code {
   inset: auto 12px 12px auto !important;
   transform: none !important;
 }
+
+.tiny-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background-color: #1b2338;
+  border: 1px solid #00c0d3;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.no-resize {
+  resize: none; /* Disables resizing */
+}
+
+
+.tiny-button:hover {
+  background-color: #00c0d3;
+  color: #1b2338;
+}
+
 
 .w-webflow-badge>img {
   position: unset;
@@ -602,7 +643,15 @@ fieldset[disabled]:not(.w-input-disabled) .w-input,
 fieldset[disabled]:not(.w-input-disabled) .w-select {
   background-color: #eee;
 }
-
+textarea {
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Disable horizontal scrolling */
+  resize: none; /* Prevent resizing */
+  height: 100%; /* Set a fixed height */
+  width: 100%; /* Adjust width to container */
+  border: none;
+  resize: none;
+}
 textarea.w-input,
 textarea.w-select {
   height: auto;
@@ -3577,6 +3626,14 @@ blockquote {
   font-weight: 400;
   line-height: 100%;
   text-decoration: none;
+}
+
+[data-w-id="clear-button"]:hover,
+[data-w-id="upload-button"]:hover,
+[data-w-id="run-button"]:hover {
+  box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.2); /* Subtle white glow */
+  transform: translateY(-2px); /* Slight hover lift */
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth animation */
 }
 
 .heading {

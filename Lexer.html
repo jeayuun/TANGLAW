@@ -51,7 +51,7 @@
 </head>
 
 <body class="vsc-initialized">
-  <nav class="navbar-main">
+  <nav class="navbar-main" style="margin-bottom: 0px;">
     <div class="navbar-no-shadow">
       <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease"
         role="banner" class="navbar-no-shadow-container w-nav">
@@ -101,7 +101,7 @@
     </div>
   </nav>
 
-  <main id="hero" class="hero-section" style="height: 100%">
+  <main id="hero" class="hero-section" style="height: 100%; margin-top: 0px; overflow: hidden;">
     <img src="./Flybot - Webflow HTML Website Template_files/677b2bef9038c112589ef5b3_background (4).png" loading="lazy"
       sizes="100vw" srcset="
           https://cdn.prod.website-files.com/677a01a00ef9fe8e72bc3e44/677b2bef9038c112589ef5b3_background%20(4)-p-500.png   500w,
@@ -110,7 +110,7 @@
           https://cdn.prod.website-files.com/677a01a00ef9fe8e72bc3e44/677b2bef9038c112589ef5b3_background%20(4).png        1160w
         " alt="background" class="background" />
         <div class="container w-full h-full grid grid-cols-3 rounded-xl border-[1px] border-neutral-800 flex-grow"
-        style="border: 1px solid #1b2338; grid-column-gap: 16px;">
+        style="border: 1px solid #1b2338; grid-column-gap: 16px; margin-top: 0px;">
       <div class="code_editor w-full flex-grow col-span-2 flex flex-col items-center justify-center py-8 px-8">
         <div data-w-id="3e0214f9-a368-e0e4-a0ff-0ba390188d3b" style="
               transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1)
@@ -132,9 +132,54 @@
           <div class="line_numbers bg-transparent text-neutral-50 w-12 flex flex-col items-end pr-2 py-2 mr-2">
             <div class="text-sm font-mono text-neutral-600">1</div>
           </div>
-          <textarea style="height: 400px"
-            class="bg-transparent text-sm font-mono text-neutral-50 w-full h-full py-2 px-4 focus:outline-none"></textarea>
+          <textarea style="height: 320px" id="codeEditor" class="bg-transparent text-sm font-mono text-neutral-50 w-full h-full py-2 px-4 focus:outline-none no-resize"></textarea>
         </div>
+        <div class="button-container flex justify-center gap-4 mt-4">
+          <div data-w-id="clear-button" style="
+                      transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1)
+                        rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+                      opacity: 1;
+                      transform-style: preserve-3d;
+                    " class="badge">
+            <div class="icon w-embed">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="20" height="20" fill="white">
+                <path d="M576 128c0-35.3-28.7-64-64-64L205.3 64c-17 0-33.3 6.7-45.3 18.7L9.4 233.4c-6 6-9.4 14.1-9.4 22.6s3.4 16.6 9.4 22.6L160 429.3c12 12 28.3 18.7 45.3 18.7L512 448c35.3 0 64-28.7 64-64l0-256zM271 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/>
+              </svg>
+            </div>
+          </div>
+        
+          <div data-w-id="upload-button" style="
+                                transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1)
+                                  rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+                                opacity: 1;
+                                transform-style: preserve-3d;
+                              " class="badge">
+            <label for="fileUpload" style="cursor: pointer; display: flex; align-items: center; gap: 8px;">
+              <div class="icon w-embed">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="18" height="18" fill="white">
+                  <path d="M288 109.3L288 352c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-242.7-73.4 73.4c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l128-128c12.5-12.5 32.8-12.5 45.3 0l128 128c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L288 109.3zM64 352l128 0c0 35.3 28.7 64 64 64s64-28.7 64-64l128 0c35.3 0 64 28.7 64 64l0 32c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64l0-32c0-35.3 28.7-64 64-64zM432 456a24 24 0 1 0 0-48 24 24 0 1 0 0 48z" />
+                </svg>
+              </div>
+              <div class="tittle-badge">Upload Code</div>
+            </label>
+            <input type="file" id="fileUpload" accept=".lit" style="display: none;" />
+          </div>
+
+        
+          <div data-w-id="run-button" style="
+                      transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1)
+                        rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+                      opacity: 1;
+                      transform-style: preserve-3d;
+                    " class="badge">
+            <div class="icon w-embed">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" fill="white">
+                <path d="M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z"></path>
+              </svg>
+            </div>
+            <div class="tittle-badge">Tokenize      </div>
+          </div>
+        </div>        
       </div>
       <div class="code_analysis w-full h-full col-span-1 flex flex-col items-center justify-start py-8 px-8">
         <div class="flex justify-center w-full mb-4" style="gap: 20px;">
@@ -194,20 +239,71 @@
     }
   </style>
   <script>
-    document
-      .getElementById("fileUpload")
-      .addEventListener("change", function (event) {
-        const file = event.target.files[0];
-        if (file && file.name.endsWith(".lit")) {
-          const reader = new FileReader();
-          reader.onload = function (e) {
-            document.getElementById("codeEditor").value = e.target.result;
-          };
-          reader.readAsText(file);
-        } else {
-          alert("Please upload a valid .lit file.");
-        }
-      });
+    const editor = document.querySelector("textarea");
+    const lineNumbersContainer = document.querySelector(".line_numbers");
+
+    // Function to update line numbers dynamically
+    function updateLineNumbers() {
+      const totalLines = editor.value.split("\n").length; // Count total lines in the textarea
+      lineNumbersContainer.innerHTML = ""; // Clear existing line numbers
+      for (let i = 1; i <= totalLines; i++) {
+        const lineNumber = document.createElement("div");
+        lineNumber.textContent = i; // Add line number
+        lineNumber.className = "text-sm font-mono text-neutral-600"; // Apply existing styles
+        lineNumbersContainer.appendChild(lineNumber);
+      }
+    }
+
+    // Add event listener to the textarea to update line numbers on input
+    editor.addEventListener("input", updateLineNumbers);
+
+    // Ensure the line numbers are initialized on page load
+    updateLineNumbers();
+
+    // Add functionality to the clear button
+    document.querySelector('[data-w-id="clear-button"]').addEventListener("click", function () {
+        const editor = document.getElementById("codeEditor");
+        const lineNumbersContainer = document.querySelector(".line_numbers");
+
+        // Clear the textarea
+        editor.value = "";
+
+        // Clear line numbers (reset to 1)
+        lineNumbersContainer.innerHTML = '<div class="text-sm font-mono text-neutral-600">1</div>';
+    });
+
+    // Add event listener for file upload
+    document.getElementById("fileUpload").addEventListener("change", function (event) {
+      const file = event.target.files[0]; // Get the selected file
+
+      if (file && file.name.endsWith(".lit")) { // Validate the file type
+        const reader = new FileReader(); // Create a FileReader instance
+
+        // When the file is successfully read
+        reader.onload = function (e) {
+          const editor = document.getElementById("codeEditor"); // Get the textarea element
+          const lineNumbersContainer = document.querySelector(".line_numbers"); // Line numbers container
+
+          // Display the file content in the textarea
+          editor.value = e.target.result;
+
+          // Update line numbers dynamically
+          const totalLines = editor.value.split("\n").length;
+          lineNumbersContainer.innerHTML = ""; // Clear existing line numbers
+          for (let i = 1; i <= totalLines; i++) {
+            const lineNumber = document.createElement("div");
+            lineNumber.textContent = i; // Add line number
+            lineNumber.className = "text-sm font-mono text-neutral-600"; // Keep styling
+            lineNumbersContainer.appendChild(lineNumber);
+          }
+        };
+
+        reader.readAsText(file); // Read the file content as plain text
+      } else {
+        alert("Please upload a valid .lit file."); // Alert if the file is not .lit
+      }
+    });
+
 
     document
       .getElementById("runLexer")
